@@ -9,7 +9,7 @@ class ChatbotController < ApplicationController
         else
           message = "kami%20tidak%tahu"
         end
-        text = "https://www.google.com/search?q=#{message}"
+        text = "hasil%20pencarian%20google:%20https://www.google.com/search?q=#{message}"
           require 'json'
           %x{curl -X POST \
           'https://qisme.qiscus.com/api/v1/chat/conversations/post_comment?access_token=#{access_token}&topic_id=#{topic_id}&comment=#{text}&type=&payload=' \
