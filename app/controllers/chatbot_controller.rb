@@ -5,11 +5,13 @@ class ChatbotController < ApplicationController
         message = params[:message][:text]
         topic_id = params[:chat_room][:qiscus_room_id]
         if !message.nil?
-          message = message.split(' ').join('%2B')
+        #   message = message.split(' ').join('%2B')
+          message = message.split(' ').join('%20')
         else
           message = "kami%20tidak%tahu"
         end
-        text = "hasil%20pencarian%20google:%20https://www.google.com/search?q=#{message}"
+        # text = "hasil%20pencarian%20google:%20https://www.google.com/search?q=#{message}"
+        text = "#{message}%20juga"
           require 'json'
           %x{curl -X POST \
           'https://qisme.qiscus.com/api/v1/chat/conversations/post_comment?access_token=#{access_token}&topic_id=#{topic_id}&comment=#{text}&type=&payload=' \
